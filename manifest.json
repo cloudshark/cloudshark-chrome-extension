@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "CloudShark Chrome Extension",
+  "version": "1.0.0",
+  "minimum_chrome_version": "38",
+  "permissions": [
+    "https://www.cloudshark.org/",
+    "contextMenus" ],
+  "icons": {
+    "16": "assets/16x16_shark.png",
+    "48": "assets/48x48_shark.png",
+    "128": "assets/128x128_shark.png"
+  },
+  "background": { "scripts": ["main.js"] },
+  "content_scripts": [
+    {
+      "matches": ["https://www.cloudshark.org/captures*"],
+      "js": ["content.js"]
+    }
+  ]
+}
