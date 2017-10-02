@@ -9,16 +9,18 @@ console.debug("CloudShark Chrome Extension Loaded");
 // selects something from the context menu
 var elementClicked = null
 document.addEventListener("mousedown", function(event){
+  var enable = false;
   elementClicked = event.target;
- 	sendMessage("disable");
-	var node = elementClicked;
-	while (node != null) {
-  	if (node.id == "captures") {
-			sendMessage("enable");
-      return;
+  var node = elementClicked;
+  while (node != null) {
+    if (node.id == "captures") {
+      enable = true;
+      break;
     }
     node = node.parentNode;
-	}
+  }
+
+  sendMessage(enable ? "enable" : "disable");
 }, true);
 
 function getCaptureID() {

@@ -49,22 +49,22 @@ function goToResponse(info, tab) {
 }
 
 function disableButtons() {
-	for (b in buttons) {
-		chrome.contextMenus.update(buttons[b], { enabled: false, });
-	}
+  for (b in buttons) {
+    chrome.contextMenus.update(buttons[b], { enabled: false, });
+  }
 }
 
 function enableButtons() {
-	for (b in buttons) {
-		chrome.contextMenus.update(buttons[b], { enabled: true, });
-	}
+  for (b in buttons) {
+    chrome.contextMenus.update(buttons[b], { enabled: true, });
+  }
 }
 
 // Listen for message from content script
 chrome.runtime.onMessage.addListener(function(message) {
-	if(message == "enable") {
-		enableButtons();
-	} else {
-		disableButtons();
-	}
+  if(message == "enable") {
+    enableButtons();
+  } else {
+    disableButtons();
+  }
 });
